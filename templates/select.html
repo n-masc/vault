@@ -1,0 +1,30 @@
+{% include 'header-index.html' %}
+
+<div class="container">
+  <div class="row">
+    <h1>Select your game</h1>
+  </div>
+
+
+    <div class="row align-items-center">
+      {% for game in game_list %}
+        <div class="col-lg-3 col-md-4 col-sm-6 align-self-center text-center">
+          {% if game.cover %}
+            <a href="{{ url_for('show_game', id=game.id) }} ">
+              <img src="{{ game.cover }}" class="index-cover" alt="cover art">
+            </a>
+          {% else %}
+            <img class="index-cover" src="static/images/not_found.png" alt="image not found">
+          {% endif %}
+          <div class="col-lg-3 col-md-4 col-sm-6 text-center text">
+            <p>
+              {{ game.name }}
+            </p>
+          </div>
+        </div>
+      {% endfor%}
+    </div>
+
+</div>
+
+{% include 'footer.html' %}

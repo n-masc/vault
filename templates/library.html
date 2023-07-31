@@ -1,0 +1,25 @@
+{% include 'header-index.html' %}
+
+<div class="container-fluid align-items-center" id="background-library">
+  {% if not games %}
+  <div class="row align-items-center library-page">
+    <div class="col-lg-12 text-center">
+      <H2 class="h1-center">Looks like your VAULT is empty! Start searching to add games!</H2>
+      <form class="d-flex " action="{{ url_for('search_games') }}" method="post">
+        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search">
+        <button class="btn btn-outline-primary" type="submit" >Search</button>
+      </form>
+    </div>
+  </div>
+  {% else %}
+  <div class="row align-items-center" id="shelf">
+    {% for game in games %}
+    <div class="col-lg-3 col-md-4 col-sm-6 align-self-center text-center" id="game-spot">
+      <a href="{{ url_for('display_game', id=game.id) }}"><img class="index-cover"  src="{{ game.game_img }}" alt="cover art"></a>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+
+{% include "footer.html" %}

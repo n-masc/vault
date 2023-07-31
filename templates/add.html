@@ -1,0 +1,22 @@
+{% include 'header.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+  <div class="container-fluid background">
+
+    <div class="row align-items-center">
+      <h1>The VAULT</h1>
+      <div class="col-lg-6 col-sm-12 align-self-center text-center">
+        <img class="cover" src="{{ game.cover }}">
+      </div>
+
+      <div class="col-lg-3 col-sm-12 text-left description">
+        <h1> {{game.name }}</h1>
+        <h2>Rate game</h2>
+          <div class="rate_form">
+            {{ wtf.quick_form(form, button_map={'submit': 'primary'}) }}
+          </div>
+      </div>
+    </div>
+  </div>
+
+{% include 'footer.html' %}

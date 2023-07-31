@@ -1,0 +1,22 @@
+{% include 'header-index.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+<div class="container" xmlns="http://www.w3.org/1999/html">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <img class="mini-logo" src="static/images/vault2.png">
+      <h2>Register new account</h2>
+      <div class="col-lg-12 text-start form-column" style="color:white">
+          {{ form.hidden_tag() }}
+          {{ wtf.quick_form(form, button_map={'submit': 'primary', "margin-top": "20vh"}) }}
+      </div>
+        <br>
+        <br>
+      <div>
+        <h3>Already have an account?</h3>
+        <a class="btn btn-primary" href="{{ url_for('login_page') }}">Login</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'footer.html' %}

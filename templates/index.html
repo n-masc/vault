@@ -1,0 +1,40 @@
+{% include 'header-index.html' %}
+
+<div class="container-fluid align-items-center" id="background2">
+    <div class="row align-items-center">
+      <div class="col text-center">
+        <img class="logo" src="static/images/vault2.png">
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-lg-12 text-center home-page">
+        <h2>Try searching for a game!</h2>
+        <form class="d-flex" action="{{ url_for('search_games') }}" method="post">
+          <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search">
+          <button class="btn btn-outline-primary" type="submit" >Search</button>
+        </form>
+      </div>
+    </div>
+        <br>
+        <br>
+<!--    <div class="col text-center">-->
+<!--        <h2>Log in to add games to your personal library!</h2>-->
+<!--      <a class="btn btn-primary btn-long" href="{{ url_for('login_page') }} ">Login</a>-->
+<!--      <br>-->
+<!--        <br>-->
+<!--        <h2>Don't have an account? Register here</h2>-->
+<!--      <a class="btn btn-primary btn-block" href="{{ url_for('register') }} ">Register</a>-->
+<!--      <br>-->
+<!--    </div>-->
+
+    <div class="row align-items-center" id="shelf">
+      {% for game in games %}
+      <div class="col-lg-3 col-md-4 col-sm-6 align-self-center text-center" id="game-spot">
+        <a href="{{ url_for('display_game', id=game.id) }}"><img class="index-cover"  src="{{ game.game_img }}" alt="cover art"></a>
+      </div>
+      {% endfor %}
+    </div>
+
+</div>
+
+{% include "footer.html" %}

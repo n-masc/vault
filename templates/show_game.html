@@ -1,0 +1,76 @@
+{% include 'header.html' %}
+  <div class="container-fluid background">
+
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-sm-12 align-self-center text-center">
+        <img class="cover" src="{{ game.cover }}">
+      </div>
+
+      <div class="col-lg-3 col-sm-12 text-left description">
+        <h1 class="title"> {{game.name }}</h1>
+        <h2> {{game.developer}}</h2>
+        <h3>Release date: {{game.release_date}}</h3>
+        <h3>Community rating: {{game.rating}}/100</h3>
+        <h3> {{game.story}}</h3>
+        <br>
+        {% if current_user.is_authenticated %}
+        <a class="btn btn-success" href="{{ url_for('add_game', id=game.id) }} ">Add game</a>
+        {% else %}
+        <h3>Log in to add this game to your library</h3>
+
+        <a class="btn btn-primary" href="{{ url_for('login_page') }}">Login</a>
+        <br>
+        <h3>Don't have an account?</h3>
+        <a class="btn btn-primary btn-block" href="{{ url_for('register') }}">Register new account</a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="row text-center">
+      <h1>Enjoy this? Have you tried these?</h1>
+    </div>
+    <div class="row justify-content-around similar_game_shelf">
+      {% for game in similar_games_list.values() %}
+        <div class="col-lg-2">
+          <a href="{{ url_for('show_game', id=game.id) }} ">
+            <img src="{{game.img}}" class="preview-game" alt="{{game.name}}">
+          </a>
+          <h3>{{game.name}}</h3>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+<!--    <div class="row align-items-center">-->
+<!--      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">-->
+<!--        <div class="carousel-inner">-->
+<!--          {% set active = true %}-->
+<!--          {% for value in similar_games_list.values() %}-->
+<!--          <div class="carousel-item {% if loop.first %}active{% endif %}">-->
+
+<!--            <img src="{{value.img}}" class="d-block w-10" alt="{{value.name}}">-->
+<!--            <h2>{{value.name}}</h2>-->
+<!--          </div>-->
+<!--          {% endfor %}-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">-->
+<!--        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--        <span class="visually-hidden">Previous</span>-->
+<!--      </button>-->
+<!--      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">-->
+<!--        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--        <span class="visually-hidden">Next</span>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+
+{% include 'footer.html' %}
+
+
+
+
+
+

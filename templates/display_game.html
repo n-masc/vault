@@ -1,0 +1,28 @@
+{% include 'header.html' %}
+<div class="container-fluid background">
+  <div class="row align-items-center gameshelf">
+    <div class="col-lg-6 col-sm-12 text-center align-self-start">
+      <img class="cover" src="{{ game.game_img }}">
+      <br>
+      <div class="col justify-content-center">
+        <br>
+        <a class="btn btn-success" href="{{ url_for('edit_rating', id=game.id) }} "><i class="fa-regular fa-pen-to-square"></i></a>
+        <a class="btn btn-danger" href="{{ url_for('remove', id=game.id) }} "><i class="fa-regular fa-trash-can"></i></a>
+        <a class="btn btn-dark" href="{{ url_for('search_soundtrack', id=game.id) }}"><i class="fa-brands fa-spotify"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-6 col-sm-12 text-left description">
+      <h1 class="title">{{ game.title }}</h1>
+      <h2><em>{{game.developer}}</em></h2>
+      <br>
+      <h3>Released:     {{game.year}}</h3>
+      <h3>IGDB Rating:  {{game.rating}} / 100</h3>
+      <h3>User Rating:  {{game.user_rating}} / 100</h3>
+      <br>
+      <h4>{{game.story}}</h4>
+      <br>
+    </div>
+  </div>
+</div>
+
+{% include 'footer.html' %}
